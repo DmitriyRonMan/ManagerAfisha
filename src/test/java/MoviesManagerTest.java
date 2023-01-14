@@ -60,7 +60,6 @@ public class MoviesManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-
     @Test
     public void findLastTestMax() {
 
@@ -100,6 +99,44 @@ public class MoviesManagerTest {
         manager.addMovie(movie12);
 
         String[] expected = {movie12, movie11, movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
+        String[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void findLastTestLimitOutMax() {
+
+        MovieManager manager = new MovieManager(6);
+        manager.addMovie(movie1);
+        manager.addMovie(movie2);
+        manager.addMovie(movie3);
+        manager.addMovie(movie4);
+        manager.addMovie(movie5);
+        manager.addMovie(movie6);
+        manager.addMovie(movie7);
+
+        String[] expected = {movie6, movie5, movie4, movie3, movie2, movie1};
+        String[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void findLastTestLimitOutMin() {
+
+        MovieManager manager = new MovieManager(11);
+        manager.addMovie(movie1);
+        manager.addMovie(movie2);
+        manager.addMovie(movie3);
+        manager.addMovie(movie4);
+        manager.addMovie(movie5);
+        manager.addMovie(movie6);
+        manager.addMovie(movie7);
+        manager.addMovie(movie8);
+
+
+        String[] expected = {movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
         String[] actual = manager.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
